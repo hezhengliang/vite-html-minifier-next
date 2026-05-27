@@ -1,9 +1,29 @@
 {
   "name": "vite-html-minifier-next",
   "version": "1.0.0",
-  "description": " Vite plugin for minifying HTML in production builds.",
-  "main": "index.js",
+  "description": "A Vite plugin for minifying HTML in production builds.",
+  "type": "module",
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.mts",
+  "exports": {
+    ".": {
+      "import": {
+        "types": "./dist/index.d.mts",
+        "default": "./dist/index.mjs"
+      },
+      "require": {
+        "types": "./dist/index.d.cts",
+        "default": "./dist/index.cjs"
+      }
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "sideEffects": false,
   "scripts": {
+    "build": "tsdown",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
@@ -26,7 +46,7 @@
   "devDependencies": {
     "@types/node": "^22.1.0",
     "prettier": "^3.3.3",
-    "tsup": "^8.2.4",
+    "tsdown": "^0.22.0",
     "typescript": "^5.5.4",
     "vite": ">=6"
   }
